@@ -3,3 +3,8 @@ agent_profiles:
     model_id: gemini-2.5-flash
     description_filepath: orchestrator_agent/agents/profiles/root_agent/description.txt
     instructions_filepath: orchestrator_agent/agents/profiles/root_agent/instruction.txt
+
+  - agent_name: trivia_agent
+    model_id: gemini-2.5-flash
+    description_filepath: orchestrator_agent/agents/profiles/trivia_agent/description.txt
+    instructions_filepath: orchestrator_agent/agents/profiles/trivia_agent/instruction.txt
