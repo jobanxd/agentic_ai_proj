@@ -1,0 +1,5 @@
+agent_profiles:
+  - agent_name: root_agent
+    model_id: gemini-2.5-flash
+    description_filepath: orchestrator_agent/agents/profiles/root_agent/description.txt
+    instructions_filepath: orchestrator_agent/agents/profiles/root_agent/instruction.txt
