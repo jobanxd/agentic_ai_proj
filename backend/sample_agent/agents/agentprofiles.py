@@ -4,7 +4,7 @@ from pathlib import Path
 class AgentProfile:
     # Getting YAML filepath
     BASE_DIR = Path(__file__).parent
-    CONFIG_FILE = BASE_DIR / 'agentprofiles.yml'
+    CONFIG_FILE = BASE_DIR / 'agentprofiles.yaml'
 
     def __init__(self, agent_name: str):
         if not agent_name:
