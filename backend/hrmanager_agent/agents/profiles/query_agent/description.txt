@@ -1,0 +1,1 @@
+The QueryAgent is a Natural Language to SQL (NL2SQL) agent that translates human-readable questions about HR data into SQL queries and executes them against the HRIS SQLite database. It serves as the intelligent search and reporting engine for the HR system, allowing users to ask questions in plain English and receive structured data responses.
