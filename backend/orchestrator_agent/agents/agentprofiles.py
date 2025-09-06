@@ -13,6 +13,9 @@ class AgentProfile:
         with open(self.CONFIG_FILE, 'r', encoding='utf-8') as file:
             config = yaml.safe_load(file)
 
+        if not config:
+            raise ValueError("Agent config file not found!")
+
         # Find the agent profile
         profile = None
         for profile in config['agent_profiles']:
@@ -21,7 +24,7 @@ class AgentProfile:
                 break
 
         if not agent_profile:
-            raise ValueError(f"Agent '{agent_name}' not found")
+            raise ValueError(f"Agent '{agent_name}' not found!")
         
         # Set properties directly from YAML
         self.name = agent_profile['agent_name']
