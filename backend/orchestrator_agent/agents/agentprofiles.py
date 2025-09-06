@@ -1,48 +1,35 @@
 import yaml
 
 class AgentProfile:
-    def __init__(self, agentprofilename: str):
-        super().__init__()
-        if not agentprofilename:
-            raise ValueError("Agent profile name must be provided")
-        if not isinstance(agentprofilename, str):
-            raise TypeError("Agent profile name must be a string")
-        
-        config_file_path = 'orchestrator_agent/agents/agentprofiles.yml'
-        with open(config_file_path, 'r', encoding='utf-8') as config_file:
-            config_data = yaml.safe_load(config_file)
-        
-        # Find the profile in the agent_profile list
-        template_config = None
+    def __init__(self, agent_name: str):
+        if not agent_name:
+            raise ValueError("Agent name is required!")
 
-        for profile in config_data.get('agent_profiles', []):
-            if profile.get('agent_name') == agentprofilename:
-                template_config = profile
+        # Load the YAML config    
+        agent_profiles_filepath = 'orchestrator_agent/agents/agentprofiles.yml'
+        
+        with open(agent_profiles_filepath, 'r', encoding='utf-8') as file:
+            config = yaml.safe_load(file)
+
+        # Find the agent profile
+        profile = None
+        for profile in config['agent_profiles']:
+            if profile['agent_name'] == agent_name:
+                agent_profile = profile
                 break
 
-        if not template_config:
-            raise ValueError(f"Agent profile '{agentprofilename}' not found in configuration yaml file.")
+        if not agent_profile:
+            raise ValueError(f"Agent '{agent_name}' not found")
         
-        self.name: str = template_config.get('agent_name')
-        
-        description_file_path = template_config.get('description_filepath')
-        if description_file_path:
-            with open(description_file_path, 'r', encoding='utf-8') as file:
-                description_str = file.read()
-        else:
-            description_str = template_config.get('description', '')
-        self.description: str = description_str
+        # Set properties directly from YAML
+        self.name = agent_profile['agent_name']
+        self.model_id = agent_profile['model_id']
 
-        instruction_file_path = template_config.get('instructions_filepath')
-        if instruction_file_path:
-            with open(instruction_file_path, 'r', encoding='utf-8') as file:
-                instruction_str = file.read()
-        else:
-            instructions_str = template_config.get('instruction', '')
-        self.instruction: str = instruction_str
+        # Load description from file
+        with open(agent_profile['description_filepath'], 'r', encoding='utf-8') as file:
+            self.description = file.read()
 
-        self.model_id: str = template_config.get('model_id')
-
-
-
-
+        # Load instruction from file
+        with open(agent_profile['instructions_filepath'], 'r', encoding='utf-8') as file:
+            self.instruction = file.read()
+            
