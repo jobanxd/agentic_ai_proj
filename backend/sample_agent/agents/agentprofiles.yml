@@ -1,0 +1,10 @@
+agent_profiles:
+  - agent_name: root_agent
+    model_id: gemini-2.5-flash
+    description_filepath: sample_agent/agents/profiles/root_agent/description.txt
+    instructions_filepath: sample_agent/agents/profiles/root_agent/instruction.txt
+
+  - agent_name: trivia_agent
+    model_id: gemini-2.5-flash
+    description_filepath: sample_agent/agents/profiles/trivia_agent/description.txt
+    instructions_filepath: sample_agent/agents/profiles/trivia_agent/instruction.txt
