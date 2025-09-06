@@ -1,14 +1,16 @@
 import yaml
+from pathlib import Path
 
 class AgentProfile:
+    # Getting YAML filepath
+    BASE_DIR = Path(__file__).parent
+    CONFIG_FILE = BASE_DIR / 'agentprofiles.yml'
+
     def __init__(self, agent_name: str):
         if not agent_name:
             raise ValueError("Agent name is required!")
 
-        # Load the YAML config    
-        agent_profiles_filepath = 'orchestrator_agent/agents/agentprofiles.yml'
-        
-        with open(agent_profiles_filepath, 'r', encoding='utf-8') as file:
+        with open(self.CONFIG_FILE, 'r', encoding='utf-8') as file:
             config = yaml.safe_load(file)
 
         # Find the agent profile
@@ -33,3 +35,7 @@ class AgentProfile:
         with open(agent_profile['instructions_filepath'], 'r', encoding='utf-8') as file:
             self.instruction = file.read()
             
+if __name__ == "__main__":
+    root_agent_profile = AgentProfile(agent_name='root_agent')
+    # Checking description
+    print(root_agent_profile.description)
