@@ -49,10 +49,18 @@ A simple demonstration agent that fetches and responds with trivia facts.
 1. **Navigate to the backend folder**:
    ```bash
    cd backend
+   adk web
+
 2. **To kill processes**
     ```bash
     sudo lsof -t -i tcp:8000 | xargs kill -9
 
 3. **To run FastAPI**
     ```bash
+    cd backend
     uvicorn main:app --reload
+
+4. **To run FE**
+    ```bash
+    cd frontend
+    npm run dev
