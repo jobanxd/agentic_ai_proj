@@ -8,3 +8,13 @@ agent_profiles:
     model_id: gemini-2.5-flash
     description_filepath: sample_agent/agents/profiles/trivia_agent/description.txt
     instructions_filepath: sample_agent/agents/profiles/trivia_agent/instruction.txt
+
+  - agent_name: math_agent
+    model_id: gemini-2.5-flash
+    description_filepath: sample_agent/agents/profiles/math_agent/description.txt
+    instructions_filepath: sample_agent/agents/profiles/math_agent/instruction.txt
+
+  - agent_name: science_agent
+    model_id: gemini-2.5-flash
+    description_filepath: sample_agent/agents/profiles/science_agent/description.txt
+    instructions_filepath: sample_agent/agents/profiles/science_agent/instruction.txt

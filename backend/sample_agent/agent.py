@@ -9,6 +9,22 @@ trivia_agent = LlmAgent(
     instruction=trivia_agent_profile.instruction,
 )
 
+math_agent_profile = AgentProfile(agent_name="math_agent")
+math_agent = LlmAgent(
+    name=math_agent_profile.name,
+    model=math_agent_profile.model_id,
+    description=math_agent_profile.description,
+    instruction=math_agent_profile.instruction,
+)
+
+science_agent_profile = AgentProfile(agent_name="science_agent")
+science_agent = LlmAgent(
+    name=science_agent_profile.name,
+    model=science_agent_profile.model_id,
+    description=science_agent_profile.description,
+    instruction=science_agent_profile.instruction,
+)
+
 root_agent_profile = AgentProfile(agent_name="root_agent")
 root_agent = Agent(
     name=root_agent_profile.name,
@@ -17,5 +33,7 @@ root_agent = Agent(
     instruction=root_agent_profile.instruction,
     sub_agents=[
         trivia_agent,
+        math_agent,
+        science_agent,
     ],
 )
